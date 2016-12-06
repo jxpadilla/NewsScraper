@@ -63,6 +63,6 @@ app.listen(process.env.PORT || 3000, function() {
 	if (process.env.PORT == undefined) {
 		console.log('The server is listening on port 3000');
 	} else {
-    	console.log('The server islistening on port: ' + process.env.PORT);
+    	console.log('The server is listening on port: ' + process.env.PORT);
     }
 });
