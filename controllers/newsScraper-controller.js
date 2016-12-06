@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var request = require('request');
 var router = express.Router();
 
-var Note = require('../models/memo.js');
+var Note = require('../models/note.js');
 var Article = require('../models/Article.js');
 
 router.get('/', function(req, res) {
@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/scrape', function(req, res) {
-    request('http://www.recode.net/', function(error, response, html) {
+    request('https://news.ycombinator.com/', function(error, response, html) {
         if (error) {
             console.log('Error with request: ' + error);
         }

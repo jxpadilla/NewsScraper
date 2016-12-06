@@ -52,7 +52,9 @@ db.on('error', function(err) {
 
 // log a successful connection message
 db.once('open', function() {
+  console.log('*******************************');	
   console.log('Mongoose connection successful!');
+  console.log('*******************************');
 });
 
 
