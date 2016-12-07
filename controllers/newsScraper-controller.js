@@ -102,6 +102,7 @@ router.delete('/articles/:id', function(req, res) {
 		})
 });
 
-console.log('Controller --> Centralized controller (newsScraper-controller.js');
+console.log('File in folder Controllers > newsScraper-controller.js');
+console.log('');
 
 module.exports = router;

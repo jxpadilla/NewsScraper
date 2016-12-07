@@ -61,7 +61,9 @@ db.once('open', function() {
 // Express app setup to listen on port 3000
 app.listen(process.env.PORT || 3000, function() {
 	if (process.env.PORT == undefined) {
-		console.log('The server is listening on port 3000');
+		console.log('The server is listening on port 3000.');
+    console.log('');
+
 	} else {
     	console.log('The server is listening on port: ' + process.env.PORT);
     }
