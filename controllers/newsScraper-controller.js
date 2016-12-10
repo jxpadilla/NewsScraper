@@ -20,22 +20,39 @@ router.get('/scrape', function(req, res) {
         if (response.statusCode === 200) {
             var $ = cheerio.load(html);
             var resArray = [];
-            $('.c-entry-box__title').each(function(i, element) {
+            var links = $('a.storylink')
+            console.log(links);
+            
+            links.each(function(i, link) {
                 var data = {};
-                data.title = $(this).children('a').text();
-                data.link = $(this).children('a').attr('href');
+                data.title = $(this).text();
+                data.url = $(this).attr('href');
 
-                resArray.push(data);
+                console.log(data.title);
 
                 var entry = new Article(data);
+                // identify mongo collection 
+                // search to identify duplicates
+                // if duplicates are found do not save
+                Article.find({title:entry.title}, function(err, articles) {
+                    if(articles.length == 0) {
+                        entry.save(function(err, doc) {
+                            if (err) {
+                                // console.log(err);
+                            } else {
+                                console.log("Save worked for ", entry.title);
+                                resArray.push(data);
+                                return;
 
-                entry.save(function(err, doc) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        return;
+                            }
+                        });                           
                     }
-                })
+                    else{
+                        console.log(articles);
+                        console.log("length: ", articles.length);
+                    }       
+                });
+                
             });
             var hbsObj = { articles: resArray };
             res.json(hbsObj);

@@ -55,7 +55,7 @@ $(document).ready(function() {
             for (var i = 0; i < data.length; i++) {
                 var p = $('<p data-id="' + data[i]._id + '">' + data[i].title + '</p>');
                 articleTitles.push(p);
-                var a = $('<a href="' + data[i].link + '" target="_blank">' + data[i].link + '</a>');
+                var a = $('<a href="' + data[i].url + '" target="_blank">' + data[i].url + '</a>');
                 articleLinks.push(a);
             }
             displayArticleTitle(articleTitles[curIndex]);

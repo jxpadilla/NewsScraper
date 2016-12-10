@@ -8,7 +8,7 @@ var ArticleSchema = new Schema({
     unique: true,
     required: true
   },
-  link: {
+  url: {
     type: String,
     unique: true,
     required: true
